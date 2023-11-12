@@ -167,5 +167,27 @@
         &.site span.label {
             width: 70px;
         }
+
+        &.move span.label {
+            width: 70px;
+        }
+
+        &.move {
+            .table button {
+                display: flex;
+                justify-content: space-between;
+
+                .icon-wrapper {
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                }
+            }
+
+            svg {
+                width: 15px;
+                height: 15px;
+            }
+        }
     }
 }

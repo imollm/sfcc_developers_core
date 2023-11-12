@@ -530,6 +530,58 @@
                     </button>
                 </div>
 
+                <!-- Move -->
+                <div class="toolbar-button-wrapper toolbar-button-move-wrapper">
+                    <!-- Move Popover -->
+                    <transition name="fade">
+                        <div class="devtool-popover move" id="popoverMove" ref="popoverMove" role="tooltip" v-if="popovers.move">
+                            <div class="table">
+                                <button data-devtool
+                                    @click.prevent="moveToolbar('top')"
+                                    v-tooltip.right="{ content: 'Move toolbar on top', classes: 'devtool-tooltip', delay: { show: tooltipDelay } }">
+                                    <span class="label">Top</span>
+                                    <span class="icon-wrapper">
+                                        <svg role="img"><use href="#devtool-move-top"/></svg>
+                                    </span>
+                                </button>
+                                <button data-devtool
+                                    @click.prevent="moveToolbar('right')"
+                                    v-tooltip.right="{ content: 'Move toolbar on right', classes: 'devtool-tooltip', delay: { show: tooltipDelay } }">
+                                    <span class="label">Right</span>
+                                    <span class="icon-wrapper">
+                                        <svg role="img"><use href="#devtool-move-right"/></svg>
+                                    </span>
+                                </button>
+                                <button data-devtool
+                                    @click.prevent="moveToolbar('bottom')"
+                                    v-tooltip.right="{ content: 'Move toolbar on bottom', classes: 'devtool-tooltip', delay: { show: tooltipDelay } }">
+                                    <span class="label">Bottom</span>
+                                    <span class="icon-wrapper">
+                                        <svg role="img"><use href="#devtool-move-bottom"/></svg>
+                                    </span>
+                                </button>
+                                <button data-devtool
+                                    @click.prevent="moveToolbar('left')"
+                                    v-tooltip.right="{ content: 'Move toolbar on left', classes: 'devtool-tooltip', delay: { show: tooltipDelay } }">
+                                    <span class="label">Left</span>
+                                    <span class="icon-wrapper">
+                                        <svg role="img"><use href="#devtool-move-left"/></svg>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </transition>
+
+                    <!-- Move Button -->
+                    <button class="toolbar-button move-toolbar" id="popoverButtonMoveToolbar" ref="popoverButtonMoveToolbar" aria-describedby="popoverMove" data-devtool
+                        @click.prevent="togglePopover('move')"
+                        v-tooltip="{ content: 'Move', classes: popovers.move ? 'devtool-tooltip-disabled' : 'devtool-tooltip', delay: { show: tooltipDelay } }"
+                        :class="{ 'active': popovers.move }"
+                    >
+                        <svg role="img"><use href="#devtool-move"/></svg>
+                    </button>
+                </div>
+
                 <!-- Open Info -->
                 <a href="https://github.com/sfccdevops/sfcc_developers_core#readme" target="devtool-info" class="open-info" v-tooltip="{ content: 'SFCC Developer Core Info', classes: 'devtool-tooltip', delay: { show: tooltipDelay } }" data-devtool>
                     &#9432;
@@ -616,6 +668,37 @@
                     <path d="M14 46V31h12v15"/>
                 </g>
             </symbol>
+            <symbol id="devtool-move" viewBox="0 0 48 48">
+                <g fill="none" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
+                    <rect x="2" y="2" width="44" height="44" rx="4" ry="4"/>
+                    <line x1="2" y1="24" x2="46" y2="24"/>
+                    <line x1="24" y1="2" x2="24" y2="46"/>
+                </g>
+            </symbol>
+            <symbol id="devtool-move-bottom" viewBox="0 0 48 48">
+                <svg width="48" height="48" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2" y="2" width="44" height="44" rx="4" ry="4" fill="none" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+                    <line x1="10" y1="28" x2="38" y2="28" fill="none" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+                </svg>
+            </symbol>
+            <symbol id="devtool-move-right" viewBox="0 0 48 48">
+                <svg width="48" height="48" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2" y="2" width="44" height="44" rx="4" ry="4" fill="none" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+                    <line x1="28" y1="10" x2="28" y2="38" fill="none" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+                </svg>
+            </symbol>
+            <symbol id="devtool-move-left" viewBox="0 0 48 48">
+                <svg width="48" height="48" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2" y="2" width="44" height="44" rx="4" ry="4" fill="none" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+                    <line x1="20" y1="10" x2="20" y2="38" fill="none" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+                </svg>
+            </symbol>
+            <symbol id="devtool-move-top" viewBox="0 0 48 48">
+                <svg width="48" height="48" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2" y="2" width="44" height="44" rx="4" ry="4" fill="none" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+                    <line x1="10" y1="20" x2="38" y2="20" fill="none" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+                </svg>
+            </symbol>
         </svg>
     </div>
 </template>
@@ -651,7 +734,8 @@ export default {
                 messages: false,
                 preferences: false,
                 session: false,
-                site: false
+                site: false,
+                move: false
             },
             section: null,
             subsection: null,
@@ -941,6 +1025,9 @@ export default {
         togglePopover(id) {
             this.resetToolbar(id);
             this.popovers[id] = !this.popovers[id];
+        },
+        moveToolbar(zone) {
+
         }
     },
     watch: {

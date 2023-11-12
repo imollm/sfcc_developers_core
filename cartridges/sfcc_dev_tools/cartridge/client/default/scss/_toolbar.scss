@@ -102,6 +102,37 @@
                     }
                 }
             }
+
+            &.toolbar-button-move-wrapper {
+                position: absolute;
+                right: 80px;
+    
+                .move-toolbar {
+                    background: transparent;
+                    border: none;
+                    color: #FFF;
+                    display: inline-block;
+                    font-size: 14px;
+                    font-weight: 500;
+                    height: $toolbar-height;
+                    line-height: $toolbar-height;
+                    margin: 0;
+                    padding: 0 14px;
+        
+                    svg {
+                        width: 15px;
+                        height: 15px;
+                        margin: 0;
+                        padding: 0;
+                        position: relative;
+                        top: 2px;
+                    }
+        
+                    &:hover {
+                        background: #000;
+                    }
+                }
+            }
         }
 
         .hide-toolbar {
