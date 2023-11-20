@@ -195,11 +195,89 @@
             }
         }
 
-        &.right {
-            left: calc(100vw - 40px);
+        &.top {
             top: 0;
+            left: 0;
+            width: 100vw;
+            height: 40px;
+            border-top: none;
+            border-right: none;
+            border-bottom: 2px solid #666;
+            border-left: none;
+        }
+
+        &.right {
+            top: 0;
+            left: calc(100vw - 40px);
             width: 40px;
-            height: 100vw;
+            height: 100vh;
+            border-top: none;
+            border-right: none;
+            border-bottom: none;
+            border-left: 2px solid #666;
+
+            .toolbar-button-wrapper:has(.move-toolbar) {
+                width: 40px;
+                right: 0;
+                bottom: 80px;
+            }
+
+            .open-info {
+                width: 40px;
+                top: unset;
+                right: 0;
+                bottom: 40px;
+            }
+
+            .hide-toolbar {
+                width: 40px;
+                top: unset;
+                right: 0;
+                bottom: 0;
+                display: flex;
+                justify-content: center;
+
+                .move-toolbar {
+                    padding: 0;
+                }
+            }
+        }
+
+        &.left {
+            top: 0;
+            left: 0;
+            width: 40px;
+            height: 100vh;
+            border-top: none;
+            border-right: 2px solid #666;
+            border-bottom: none;
+            border-left: none;
+
+            .toolbar-button-wrapper:has(.move-toolbar) {
+                width: 40px;
+                left: 0;
+                bottom: 80px;
+                display: flex;
+                justify-content: center;
+
+                .move-toolbar {
+                    padding: 0;
+                }
+            }
+
+            .open-info {
+                width: 40px;
+                top: unset;
+                left: 0;
+                bottom: 40px;
+            }
+
+            .hide-toolbar {
+                width: 40px;
+                top: unset;
+                left: 0;
+                bottom: 0;
+            }
         }
     }
 }
