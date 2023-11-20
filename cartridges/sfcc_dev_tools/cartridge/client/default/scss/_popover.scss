@@ -191,4 +191,16 @@
             }
         }
     }
+
+    .devtool-toolbar.top .devtool-popover {
+        bottom: -122px;
+    }
+
+    .devtool-toolbar.right .devtool-popover {
+        // TODO: apply styles to show devtool-popover on right side
+    }
+
+    .devtool-toolbar.left .devtool-popover {
+        // TODO: apply styles to show devtool-popover on left side
+    }
 }

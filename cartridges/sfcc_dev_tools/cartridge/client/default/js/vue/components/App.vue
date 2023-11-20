@@ -776,6 +776,13 @@ export default {
             this.eventListener();
         }
 
+        this.zones = {
+            top: 'top',
+            right: 'right',
+            bottom: 'bottom',
+            left: 'left'
+        };
+
         this.reloadDrawer();
     },
     computed: {
@@ -1027,7 +1034,17 @@ export default {
             this.popovers[id] = !this.popovers[id];
         },
         moveToolbar(zone) {
+            const devToolBar = document.querySelector('.devtool-toolbar');
 
+            Object.values(this.zones).forEach(zone => {
+                devToolBar.classList.remove(zone);
+            });
+
+            if (zone !== this.zones.bottom) {
+                devToolBar.classList.add(zone);
+            }
+
+            document.querySelector('#popoverMove').remove();
         }
     },
     watch: {
