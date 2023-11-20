@@ -575,7 +575,7 @@
                     <!-- Move Button -->
                     <button class="toolbar-button move-toolbar" id="popoverButtonMoveToolbar" ref="popoverButtonMoveToolbar" aria-describedby="popoverMove" data-devtool
                         @click.prevent="togglePopover('move')"
-                        v-tooltip="{ content: 'Move', classes: popovers.move ? 'devtool-tooltip-disabled' : 'devtool-tooltip', delay: { show: tooltipDelay } }"
+                        v-tooltip="{ content: 'Move SFCC Toolbar', classes: popovers.move ? 'devtool-tooltip-disabled' : 'devtool-tooltip', delay: { show: tooltipDelay } }"
                         :class="{ 'active': popovers.move }"
                     >
                         <svg role="img"><use href="#devtool-move"/></svg>
